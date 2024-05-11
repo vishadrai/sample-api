@@ -8,7 +8,7 @@ const nocache = require("nocache");
 const env = require("./env");
 const { logger } = require("./logger");
 const baseRouter = require("./router/base-router");
-const { notFound, handleError } = require("./common/error-handler");
+const { notFound, handleAPIError } = require("./common/error-handler");
 const sequelize = require("./sequelize");
 
 const app = new express();
@@ -47,7 +47,7 @@ app.use((req, res, next) => {
 baseRouter.mainRoute(app, logger);
 
 app.use(notFound);
-app.use(handleError);
+app.use(handleAPIError);
 
 const service = {
   async run() {
@@ -61,6 +61,6 @@ const service = {
 sequelize.authenticateSql();
 
 service.run().catch((err) => {
-  console.log("Error starting server", err);
+  console.log("APIError starting server", err);
   process.exit(1);
 });

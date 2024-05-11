@@ -1,4 +1,4 @@
-const Error = require("../common/error");
+const APIError = require("../common/error");
 const { limitIndexCheck } = require("../common/common-util");
 const { logger } = require("../logger");
 const { getKPIsBySubDomainId } = require("../dao/kpi");
@@ -21,7 +21,7 @@ const getAllKPIsBySubDomainId = async (req, res, next) => {
     res.status(200).send({ result });
   } catch (exception) {
     logger.error("getAllKPIsBySubDomainId failed");
-    next(new Error(exception.code, "getAllKPIsBySubDomainId failed"));
+    next(new APIError(exception.code, "getAllKPIsBySubDomainId failed"));
   }
 };
 

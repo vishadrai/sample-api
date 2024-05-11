@@ -1,7 +1,7 @@
 const KPI = require("../models/KPI");
 const { logger } = require("../logger");
 const transactionUtil = require("../common/transaction-util");
-const Error = require("../common/error");
+const APIError = require("../common/error");
 const { sequelize } = require("../sequelize");
 const { Op } = require("sequelize");
 
@@ -43,7 +43,7 @@ const getKPIsBySubDomainId = async (
   } catch (exception) {
     await transactionUtil.rollBackTransaction(transaction);
     logger.error("getKPIs - Get KPIs failed ", exception);
-    throw new Error(exception.code, "getKPIs : Failed to get KPIs");
+    throw new APIError(exception.code, "getKPIs : Failed to get KPIs");
   }
 };
 

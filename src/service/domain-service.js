@@ -1,4 +1,4 @@
-const Error = require("../common/error");
+const APIError = require("../common/error");
 const { limitIndexCheck } = require("../common/common-util");
 const { logger } = require("../logger");
 const { getPaginatedDomains } = require("../dao/domain");
@@ -19,7 +19,7 @@ const getDomains = async (req, res, next) => {
     res.status(200).send({ result });
   } catch (exception) {
     logger.error("getDomains failed");
-    next(new Error(exception.code, "getDomains failed"));
+    next(new APIError(exception.code, "getDomains failed"));
   }
 };
 

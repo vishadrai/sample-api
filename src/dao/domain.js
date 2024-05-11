@@ -1,7 +1,7 @@
 const Domain = require("../models/Domain");
 const { logger } = require("../logger");
 const transactionUtil = require("../common/transaction-util");
-const Error = require("../common/error");
+const APIError = require("../common/error");
 const { sequelize } = require("../sequelize");
 const { Op } = require("sequelize");
 
@@ -39,7 +39,7 @@ const getPaginatedDomains = async (
   } catch (exception) {
     await transactionUtil.rollBackTransaction(transaction);
     logger.error("getDomains - Get domains failed ", exception);
-    throw new Error(exception.code, "getDomains : Failed to get domains");
+    throw new APIError(exception.code, "getDomains : Failed to get domains");
   }
 };
 

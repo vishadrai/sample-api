@@ -1,7 +1,7 @@
 const SubDomain = require("../models/SubDomain");
 const { logger } = require("../logger");
 const transactionUtil = require("../common/transaction-util");
-const Error = require("../common/error");
+const APIError = require("../common/error");
 const { sequelize } = require("../sequelize");
 const { Op } = require("sequelize");
 
@@ -43,7 +43,7 @@ const getSubDomainsListByDomainId = async (
   } catch (exception) {
     await transactionUtil.rollBackTransaction(transaction);
     logger.error("getSubDomains - Get subdomains failed ", exception);
-    throw new Error(exception.code, "getSubDomains : Failed to get subdomains");
+    throw new APIError(exception.code, "getSubDomains : Failed to get subdomains");
   }
 };
 
