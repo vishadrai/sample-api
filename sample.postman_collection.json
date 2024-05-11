@@ -1,0 +1,207 @@
+{
+  "info": {
+    "_postman_id": "4977d36b-bcfc-45a6-a7fb-f148229631b8",
+    "name": "BlueBrain",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "6108283"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/sample/api/v1/healthz",
+          "host": ["{{BASE_URL}}"],
+          "path": ["sample", "api", "v1", "healthz"]
+        }
+      },
+      "response": {
+        "server_time": "2024-05-07T06:47:49.380Z"
+      }
+    },
+    {
+      "name": "Domain list API",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"pageIndex\":1,\n    \"limit\":4,\n    \"searchText\":\"\",\n    \"order\":\"ASC\",\n    \"sort\":\"domain_id\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/sample/api/v1/domains",
+          "host": ["{{BASE_URL}}"],
+          "path": ["sample", "api", "v1", "domains"]
+        }
+      },
+      "response": {
+        "result": {
+          "data": [
+            {
+              "domain_id": 1,
+              "domain_name": "Environment, Social and Governance",
+              "domain_details": null,
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "domain_id": 2,
+              "domain_name": "Internet of Things",
+              "domain_details": null,
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "domain_id": 3,
+              "domain_name": "Retail Innovation",
+              "domain_details": null,
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "domain_id": 4,
+              "domain_name": "Realty Management",
+              "domain_details": null,
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            }
+          ],
+          "page": 1,
+          "pageSize": 4,
+          "totalCount": 6
+        }
+      }
+    },
+    {
+      "name": "Sub Domains list by DomainId",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"pageIndex\":2,\n    \"limit\":4,\n    \"searchText\":\"\",\n    \"order\":\"ASC\",\n    \"sort\":\"sub_domain_id\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/sample/api/v1/subdomain/by/domain/1",
+          "host": ["{{BASE_URL}}"],
+          "path": ["sample", "api", "v1", "subdomain", "by", "domain", "1"]
+        }
+      },
+      "response": {
+        "result": {
+          "data": [
+            {
+              "sub_domain_id": 5,
+              "domain_id": 1,
+              "sub_domain_name": "Pollution prevention and control",
+              "sub_domain_details": "Environmental",
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "sub_domain_id": 6,
+              "domain_id": 1,
+              "sub_domain_name": "Health and safety in the workplace",
+              "sub_domain_details": "Social",
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            }
+          ],
+          "page": 2,
+          "pageSize": 4,
+          "totalCount": 6
+        }
+      }
+    },
+    {
+      "name": "KPIS by Sub Domain ID",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"pageIndex\":1,\n    \"limit\":4,\n    \"searchText\":\"\",\n    \"order\":\"ASC\",\n    \"sort\":\"kpi_id\"\n}\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/sample/api/v1/kpi/by/subdomain/1",
+          "host": ["{{BASE_URL}}"],
+          "path": ["sample", "api", "v1", "kpi", "by", "subdomain", "1"]
+        }
+      },
+      "response": {
+        "result": {
+          "data": [
+            {
+              "kpi_id": 1,
+              "sub_domain_id": 1,
+              "kpi_name": "Carbon Emissions Reduction",
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "kpi_id": 2,
+              "sub_domain_id": 1,
+              "kpi_name": "Renewable Energy Adoption",
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "kpi_id": 3,
+              "sub_domain_id": 1,
+              "kpi_name": "Energy Efficiency",
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            },
+            {
+              "kpi_id": 4,
+              "sub_domain_id": 1,
+              "kpi_name": "Climate Resilience and Adaptation",
+              "create_by": null,
+              "update_by": null,
+              "create_date": null,
+              "update_date": null
+            }
+          ],
+          "page": 1,
+          "pageSize": 4,
+          "totalCount": 6
+        }
+      }
+    }
+  ]
+}
