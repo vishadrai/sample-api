@@ -4,6 +4,7 @@ const express = require("express");
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 const nocache = require("nocache");
+var cors = require('cors');
 
 const env = require("./env");
 const { logger } = require("./logger");
@@ -13,6 +14,7 @@ const sequelize = require("./sequelize");
 
 const app = new express();
 app.use(express.json({ limit: "30mb" }));
+app.use(cors());
 
 app.use(compression());
 app.use(bodyParser.json());
